@@ -1,1 +1,42 @@
-<p>energy works!</p>
+<div class="row">
+    <div class="col-sm">
+        <div class="btn-group mt-3 mb-3" role="group" aria-label="Basic outlined example">
+            <button type="submit" class="btn btn-outline-dark btn-lg" name="AddI" (click)="addItem()">Adicionar Item</button>
+            <button type="submit" class="btn btn-outline-dark btn-lg" name="RemovI" (click)="removeItem()">Remover Item</button>
+            <button type="submit" class="btn btn-outline-dark btn-lg" name="LimpL" (click)="clearList()">Limpar Lista</button>
+            <button type="submit" class="btn btn-outline-dark btn-lg" name="Calc" (click)="calculate()">Calcular</button>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row text-sm-start ps-5 pe-5 mb-3">
+    <div class="col-sm">
+        <ul class="list-group list-group-numbered">
+            <li class="list-group-item" *ngFor="let item of items">
+                <div class="row">
+                    <div class="col">
+                        Nome:<input type="text" name="name" class="form-control">
+                    </div>
+                    <div class="col">
+                        Quantidade:<input type="number" name="quant" class="form-control">
+                    </div>
+                    <div class="col">
+                        Tempo:<input type="number" name="tempo" class="form-control">
+                    </div>
+                    <div class="col">
+                        {{item.name}} - {{item.time}} anos
+                    </div>
+                </div>
+            </li>
+          </ul>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-2 ps-5">
+        <p>Total:</p>
+    </div>
+    <div class="col-sm pe-5">
+        <input type="number" name="resup" class="form-control mb-3" readonly>
+    </div>
+</div>
