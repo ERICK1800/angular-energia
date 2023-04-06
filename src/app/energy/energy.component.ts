@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
 
-interface Item {
-  name: string;
-  time: number;
-}
-
 @Component({
   selector: 'app-energy',
   templateUrl: './energy.component.html',
   styleUrls: ['./energy.component.css']
 })
 export class EnergyComponent {
-  items: Item[] = [];
+
+  items: any[] = [];
 
   addItem() {
-    this.items.push({ name: 'Novo Item', time: 1 });
+    this.items.push({
+      nome: '',
+      quantidade: null,
+      tempo: null
+    });
   }
 
-  removeItem() {
-    this.items.pop();
+  removeItem(index: number) {
+    this.items.splice(index, 1);
   }
 
   clearList() {
@@ -26,9 +26,21 @@ export class EnergyComponent {
   }
 
   calculate() {
-    const total = this.items.reduce((acc, item) => {
-      return acc + item.time;
-    }, 0);
-    alert(`Total de tempo de uso: ${total} anos`);
+    let totalTempo = 0;
+    for (let item of this.items) {
+      totalTempo += item.quantidade * item.tempo;
+    }
+    this.totalTempo = totalTempo;
   }
+
+  get totalTempo(): number {
+    return this._totalTempo;
+  }
+
+  set totalTempo(value: number) {
+    this._totalTempo = value;
+  }
+
+  private _totalTempo: number = 0;
+
 }
