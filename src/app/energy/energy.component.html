@@ -2,7 +2,7 @@
 <div class="row pe-3 ps-3">
     <div class="col">
         <div class="form-floating">
-            <input type="number" name="quantM" class="form-control mb-3" [(ngModel)]="quantM">
+            <input type="number" name="membroQ" class="form-control mb-3" [(ngModel)]="membroQ">
             <label for="floatingInputValue">Quantidade de moradores</label>
         </div>
     </div>
@@ -10,7 +10,7 @@
 <div class="row pe-3 ps-3">
     <div class="col">
         <div class="form-floating">
-            <input type="number" name="quantC" class="form-control mb-3" [(ngModel)]="quantC">
+            <input type="number" name="comodoQ" class="form-control mb-3" [(ngModel)]="comodoQ">
             <label for="floatingInputValue">Quantidade de comodos</label>
         </div>
     </div>
@@ -19,15 +19,32 @@
     <div class="col">
         <div class="input-group">
             <div class="form-floating">
-                <select name="maquinaV" class="form-select" [(ngModel)]="maquinaV">
+                <select name="maquinaLaV" class="form-select" [(ngModel)]="maquinaLaV">
                     <option value="1">Sim</option>
-                    <option value="2">Não</option>
+                    <option value="0">Não</option>
                 </select>
                 <label for="floatingSelect">Máquina de lavar</label>
             </div>
             <div class="form-floating">
-                <input type="number" name="maquinaT" class="form-control mb-3" [(ngModel)]="maquinaT">
-                <label for="floatingInputValue">Tempo de uso da Máquina de lavar</label>
+                <input type="number" name="maquinaLaT" class="form-control mb-3" [(ngModel)]="maquinaLaT">
+                <label for="floatingInputValue">Tempo de uso da Máquina de lavar (horas)</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row pe-3 ps-3">
+    <div class="col">
+        <div class="input-group">
+            <div class="form-floating">
+                <select name="maquinaSeV" class="form-select" [(ngModel)]="maquinaSeV">
+                    <option value="1">Sim</option>
+                    <option value="0">Não</option>
+                </select>
+                <label for="floatingSelect">Máquina de secar</label>
+            </div>
+            <div class="form-floating">
+                <input type="number" name="maquinaSeT" class="form-control mb-3" [(ngModel)]="maquinaSeT">
+                <label for="floatingInputValue">Tempo de uso da Máquina de secar (horas)</label>
             </div>
         </div>
     </div>
@@ -41,16 +58,22 @@
             </div>
             <div class="form-floating">
                 <input type="number" name="computT" class="form-control mb-3" [(ngModel)]="computT">
-                <label for="floatingInputValue">Tempo de uso médio de cada um</label>
+                <label for="floatingInputValue">Tempo de uso médio de cada um (horas)</label>
             </div>
         </div>
     </div>
 </div>
 <div class="row pe-3 ps-3">
     <div class="col">
-        <div class="form-floating">
-            <input type="number" name="tarifa" class="form-control mb-3" [(ngModel)]="tarifa">
-            <label for="floatingInputValue">Valor da tarifa de energia</label>
+        <div class="input-group">
+            <div class="form-floating">
+                <input type="number" name="tarifaE" class="form-control mb-3" [(ngModel)]="tarifaE">
+                <label for="floatingInputValue">Valor do kWh</label>
+            </div>
+            <div class="form-floating">
+                <input type="number" name="tarifaD" class="form-control mb-3" [(ngModel)]="tarifaD">
+                <label for="floatingInputValue">Valor da tarifa de disponibilidade</label>
+            </div>
         </div>
     </div>
 </div>
@@ -65,52 +88,3 @@
         <textarea name="resup" class="form-control" id="resup" cols="30" rows="0" [value]="resup" readonly></textarea>
     </div>
 </div>
-<!--
-<div class="row">
-    <div class="col-sm">
-        <div class="btn-group mt-3 mb-3" role="group" aria-label="Basic outlined example">
-            <button type="submit" class="btn btn-outline-dark btn-lg" name="AddI" (click)="addItem()">Adicionar Item</button>
-            <button type="submit" class="btn btn-outline-dark btn-lg" name="LimpL" (click)="clearList()">Limpar Lista</button>
-            <button type="submit" class="btn btn-outline-dark btn-lg" name="Calc" (click)="calculate()">Calcular</button>
-        </div>
-    </div>
-</div>
-<hr>
-<div class="row text-sm-start ps-3 pe-3 mb-3">
-    <div class="col-sm">
-        <ul class="list-group list-group-numbered" *ngIf="items.length > 0">
-            <li *ngFor="let item of items; let i = index" class="list-group-item">
-              <div class="row">
-                <div class="col">
-                  <input type="text" class="form-control" [(ngModel)]="item.nome" placeholder="Nome do item">
-                </div>
-                <div class="col-auto mb-1">
-                    <button type="submit" class="btn btn-outline-dark btn-lg" name="RemovI" (click)="removeItem(i)">Remover Item</button>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                    <input type="number" class="form-control" [(ngModel)]="item.quantidade" placeholder="Quantidade de itens">
-                  </div>
-                <div class="col">
-                    <input type="number" class="form-control" [(ngModel)]="item.tempo" placeholder="Tempo de uso por dia em minutos">
-                </div>
-              </div>
-            </li>
-        </ul>
-        <div *ngIf="items.length == 0" class="text-center">
-            <p>A lista está vazia.</p>
-        </div>
-    </div>
-</div>
-<hr>
-<div class="row">
-    <div class="col-sm mb-3 pe-5 ps-5">
-        <div class="my-3" *ngIf="totalTempo > 0">
-            <textarea name="resup" class="form-control" cols="30" rows="0" readonly>
-                Tempo total de uso: {{ totalTempo }} munitos.
-            </textarea>
-        </div>
-    </div>
-</div>
--->
