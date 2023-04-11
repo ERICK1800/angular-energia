@@ -7,6 +7,18 @@ import { Component } from '@angular/core';
 })
 export class EnergyComponent {
 
+  quantM: number = 0;
+  quantC: number = 0;
+  maquinaT: number = 0;
+  maquinaV: string = "";
+  computQ: number = 0;
+  computT: number = 0;
+  tarifa: number = 0;
+  resup: string = "";
+
+  calcular(){}
+
+/*
   items: any[] = [];
 
   addItem() {
@@ -42,5 +54,5 @@ export class EnergyComponent {
   }
 
   private _totalTempo: number = 0;
-
+*/
 }
